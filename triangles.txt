@@ -1,0 +1,30 @@
+
+#include <ctime>
+#include <cmath>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+struct point { int x, y; };
+void countArea(double a,double b,double c) {
+    double p = 0.5*(a + b + c);
+    printf("AB = %f, AC = %f, BC = %f P = %f\n", a, b, c, p*2);
+    double S = sqrt(p*(p-a)*(p-b)*(p-c));
+    printf("S = %f", S);
+}
+int main()
+{
+    point A; A.x = 1; A.y = 2;
+    point B; B.x = 2; B.y = 3;
+    point C; C.x = 1; C.y = 4;
+    double AB = sqrt(pow((B.x-A.x),2)+pow((B.y-A.y), 2));
+    double AC = sqrt(pow((C.x-A.x),2)+pow((C.y-A.y),2));
+    double BC = sqrt(pow((C.x-B.x),2)+pow((C.y-B.y),2));
+    if (AB+AC<=BC or AB+BC<=AC or AC+BC<=AB) {
+        printf("Треугольник не существует");
+    }
+    else {
+        countArea(AB, BC, AC);
+    }
+}
